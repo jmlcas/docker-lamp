@@ -6,14 +6,14 @@ services:
             - "80:80"
         volumes:
             - ./www:/var/www/html
-        links:
+        depends_on:
             - db
-        networks:
-            - default
+
+            
     db:
         image: mysql:8.0
-        ports: 
-            - "3306:3306"
+        expose: 
+            - "3306"
         command: --default-authentication-plugin=mysql_native_password
         environment:
             MYSQL_DATABASE: dbname
@@ -22,19 +22,16 @@ services:
             MYSQL_ROOT_PASSWORD: test 
         volumes:
             - ./database/db-dump:/docker-entrypoint-initdb.d
-#           - ./conf:/etc/mysql/conf.d
-            - persistent:/var/lib/mysql
-        networks:
-            - default
+            - ./mysql-data:/var/lib/mysql
+
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
-        links: 
-            - db:db
+        depends_on: 
+            - db
         ports:
             - 8000:80
         environment:
             MYSQL_USER: root
             MYSQL_PASSWORD: test
             MYSQL_ROOT_PASSWORD: test 
-volumes:
-    persistent:
+
