@@ -27,7 +27,7 @@ services:
             - ./mysql-data:/var/lib/mysql
 
     phpmyadmin:
-        image: phpmyadmin/phpmyadmin
+        image: phpmyadmin
         depends_on: 
             - db
         ports:
