@@ -5,7 +5,8 @@ services:
     www:
         build: .
         ports: 
-            - "8200:80"
+            - "80:80"
+            - "443:443"
         volumes:
             - ./www:/var/www/html/
         depends_on:
