@@ -11,10 +11,9 @@ services:
             - db
             
     db:
-        image: mysql:8.0
+        image: mariadb:latest
         expose: 
             - "3306"
-        command: --default-authentication-plugin=mysql_native_password
         environment:
             MYSQL_DATABASE: dbname
             MYSQL_USER: user
