@@ -1,6 +1,6 @@
 # docker-lamp
 
-Docker con Apache, MySQL 8.0, PHPMyAdmin y PHP.
+Docker con Apache, MySQL, PHPMyAdmin y PHP.
 
 Ver en "localhost"
 
